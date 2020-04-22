@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/blankFragment">
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="ru.samsung.itschool.myapplication.BlankFragment"
+        android:label="fragment_1"
+        tools:layout="@layout/fragment1" >
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment3"
+            app:destination="@id/blankFragment3" />
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment4"
+            app:destination="@id/blankFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment2"
+        android:name="ru.samsung.itschool.myapplication.BlankFragment2"
+        android:label="fragment2"
+        tools:layout="@layout/fragment2" >
+        <action
+            android:id="@+id/action_blankFragment2_to_nav_graph2"
+            app:destination="@id/nav_graph2" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment3"
+        android:name="ru.samsung.itschool.myapplication.BlankFragment3"
+        android:label="fragment3"
+        tools:layout="@layout/fragment3" >
+        <action
+            android:id="@+id/action_blankFragment3_to_nav_graph2"
+            app:destination="@id/nav_graph2" />
+    </fragment>
+    <include app:graph="@navigation/nav_graph2" />
+    <fragment
+        android:id="@+id/blankFragment4"
+        android:name="ru.samsung.itschool.myapplication.BlankFragment4"
+        android:label="fragment4"
+        tools:layout="@layout/fragment4" >
+        <action
+            android:id="@+id/action_blankFragment4_to_nav_graph2"
+            app:destination="@id/nav_graph2" />
+    </fragment>
+</navigation>
