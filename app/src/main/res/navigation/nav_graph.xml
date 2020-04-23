@@ -25,8 +25,8 @@
         android:label="fragment2"
         tools:layout="@layout/fragment2" >
         <action
-            android:id="@+id/action_blankFragment2_to_nav_graph2"
-            app:destination="@id/nav_graph2" />
+            android:id="@+id/action_blankFragment2_to_main2Activity"
+            app:destination="@id/main2Activity" />
     </fragment>
     <fragment
         android:id="@+id/blankFragment3"
@@ -34,17 +34,21 @@
         android:label="fragment3"
         tools:layout="@layout/fragment3" >
         <action
-            android:id="@+id/action_blankFragment3_to_nav_graph2"
-            app:destination="@id/nav_graph2" />
+            android:id="@+id/action_blankFragment3_to_main2Activity"
+            app:destination="@id/main2Activity" />
     </fragment>
-    <include app:graph="@navigation/nav_graph2" />
     <fragment
         android:id="@+id/blankFragment4"
         android:name="ru.samsung.itschool.myapplication.BlankFragment4"
         android:label="fragment4"
         tools:layout="@layout/fragment4" >
         <action
-            android:id="@+id/action_blankFragment4_to_nav_graph2"
-            app:destination="@id/nav_graph2" />
+            android:id="@+id/action_blankFragment4_to_main2Activity"
+            app:destination="@id/main2Activity" />
     </fragment>
+    <activity
+        android:id="@+id/main2Activity"
+        android:name="ru.samsung.itschool.myapplication.Main2Activity"
+        android:label="app_bar_main2"
+        tools:layout="@layout/app_bar_main2" />
 </navigation>

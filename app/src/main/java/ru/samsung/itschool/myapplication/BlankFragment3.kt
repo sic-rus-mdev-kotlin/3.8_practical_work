@@ -39,7 +39,7 @@ class BlankFragment3 : Fragment() {
         // Inflate the layout for this fragment
         var view:View=inflater.inflate(R.layout.fragment3, container, false)
         var btn4:Button=view.findViewById(R.id.button4)
-        btn4.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigate(R.id.action_blankFragment3_to_nav_graph2)})
+        btn4.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigate(R.id.action_blankFragment3_to_main2Activity)})
         var btn4_back:Button=view.findViewById(R.id.button4_back)
         btn4_back.setOnClickListener(View.OnClickListener { view -> view.findNavController().popBackStack()})
         return view

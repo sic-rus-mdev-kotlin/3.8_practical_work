@@ -44,7 +44,7 @@ class BlankFragment2 : Fragment() {
                 // var intent: Intent = Intent( this@MainActivity, Main2Activity::class.java)
                 // startActivity(intent)
                 if (p0 != null) {
-                    p0.findNavController().navigate(R.id.action_blankFragment2_to_nav_graph2)
+                    p0.findNavController().navigate(R.id.action_blankFragment2_to_main2Activity)
                 }
             }
         })
