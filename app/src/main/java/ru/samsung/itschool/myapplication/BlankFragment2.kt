@@ -40,9 +40,6 @@ class BlankFragment2 : Fragment() {
         var btn2=view.findViewById<Button>(R.id.button2)
         btn2.setOnClickListener(object :View.OnClickListener{
             override fun onClick(p0: View?) {
-                // страый (ручной) стиль навигации
-                // var intent: Intent = Intent( this@MainActivity, Main2Activity::class.java)
-                // startActivity(intent)
                 if (p0 != null) {
                     p0.findNavController().navigate(R.id.action_blankFragment2_to_main2Activity)
                 }
