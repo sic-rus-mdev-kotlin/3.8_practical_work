@@ -1,14 +1,21 @@
 package ru.samsung.itschool.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import androidx.navigation.Navigation
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.Observer
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +31,7 @@ class BlankFragment4 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var arg1: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,16 +45,37 @@ class BlankFragment4 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view=inflater.inflate(R.layout.fragment4, container, false)
-        val et:EditText=view.findViewById(R.id.et)
-        val btn6:Button=view.findViewById(R.id.button6)
+        val view = inflater.inflate(R.layout.fragment4, container, false)
+        val liveData = findNavController(this).currentBackStackEntry?.getSavedStateHandle()
+            ?.getLiveData<String>("result_from_activity")
+        if (liveData != null) {
+            liveData.observe(viewLifecycleOwner, object : Observer<String?> {
+                override fun onChanged(s: String?) {
+                    arg1 = s
+                }
+            })
+        }
+        if(arg1!=null){
+            Toast.makeText(context,arg1,Toast.LENGTH_LONG).show()
+        }
+        val et: EditText = view.findViewById(R.id.et)
+        val btn6: Button = view.findViewById(R.id.button6)
         btn6.setOnClickListener(View.OnClickListener { view ->
-            val bundle:Bundle=Bundle()
-            bundle.putString("arg1",et.text.toString())
-            view.findNavController().navigate(R.id.action_blankFragment4_to_main2Activity,bundle)
+            // создаем бандл
+            val bundle: Bundle = Bundle()
+            // вносим в него значения
+            bundle.putString("arg1", et.text.toString())
+            // выполняем навигацию с передачей данных
+            view.findNavController().navigate(R.id.action_blankFragment4_to_main2Activity, bundle)
         })
-        val btn6_up:Button=view.findViewById(R.id.button6_up)
-        btn6_up.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigateUp() })
+        val btn6_up: Button = view.findViewById(R.id.button6_up)
+        btn6_up.setOnClickListener(View.OnClickListener { view ->
+            view.findNavController().navigateUp()
+        })
+        val btn7: Button = view.findViewById(R.id.button7)
+        btn7.setOnClickListener(View.OnClickListener { view ->
+            view.findNavController().navigate(R.id.action_blankFragment4_to_blankFragment32)
+        })
 
         return view
     }
@@ -71,3 +100,4 @@ class BlankFragment4 : Fragment() {
             }
     }
 }
+

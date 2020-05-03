@@ -42,6 +42,8 @@ class BlankFragment3 : Fragment() {
         btn4.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigate(R.id.action_blankFragment3_to_main2Activity)})
         var btn4_back:Button=view.findViewById(R.id.button4_back)
         btn4_back.setOnClickListener(View.OnClickListener { view -> view.findNavController().popBackStack()})
+        // отправка данных обратно вызывающему
+        findNavController().previousBackStackEntry?.savedStateHandle?.set("result_from_activity", "ответные данные")
         return view
     }
 

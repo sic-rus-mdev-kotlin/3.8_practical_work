@@ -33,7 +33,7 @@ class Main2Activity : AppCompatActivity() {
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_host_fragment2)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -46,6 +46,8 @@ class Main2Activity : AppCompatActivity() {
         // получаем переданное из предыдущих UI значение arg1
         val str=intent.getStringExtra("arg1")
         Toast.makeText(this,str, Toast.LENGTH_LONG).show()
+        // отправка данных обратно вызывающему
+        navController.previousBackStackEntry?.savedStateHandle?.set("result_from_activity", "ответ на:"+str)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

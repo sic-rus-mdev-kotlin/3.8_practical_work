@@ -45,15 +45,13 @@
         <action
             android:id="@+id/action_blankFragment4_to_main2Activity"
             app:destination="@id/main2Activity" />
+        <action
+            android:id="@+id/action_blankFragment4_to_blankFragment32"
+            app:destination="@id/blankFragment3" />
     </fragment>
     <activity
         android:id="@+id/main2Activity"
         android:name="ru.samsung.itschool.myapplication.Main2Activity"
         android:label="app_bar_main2"
-        tools:layout="@layout/app_bar_main2" >
-        <argument
-            android:name="arg1"
-            app:argType="reference"
-            android:defaultValue="@string/string_for_none_val" />
-    </activity>
+        tools:layout="@layout/app_bar_main2" />
 </navigation>

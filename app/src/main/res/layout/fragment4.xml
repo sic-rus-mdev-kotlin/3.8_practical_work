@@ -21,7 +21,8 @@
 
         <EditText
             android:id="@+id/et"
-            android:layout_width="60dp"
+            android:hint="enter text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
         <Button
@@ -34,6 +35,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="&lt;=" />
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="=>frag3" />
+
     </LinearLayout>
 
 
