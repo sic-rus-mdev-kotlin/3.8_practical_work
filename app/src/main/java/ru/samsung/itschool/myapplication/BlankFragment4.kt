@@ -8,12 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 
 
@@ -31,7 +27,7 @@ class BlankFragment4 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var arg1: String? = null
+    private var returnData: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +47,12 @@ class BlankFragment4 : Fragment() {
         if (liveData != null) {
             liveData.observe(viewLifecycleOwner, object : Observer<String?> {
                 override fun onChanged(s: String?) {
-                    arg1 = s
+                    returnData = s
                 }
             })
         }
-        if(arg1!=null){
-            Toast.makeText(context,arg1,Toast.LENGTH_LONG).show()
+        if(returnData!=null){
+            Toast.makeText(context,returnData,Toast.LENGTH_LONG).show()
         }
         val et: EditText = view.findViewById(R.id.et)
         val btn6: Button = view.findViewById(R.id.button6)
