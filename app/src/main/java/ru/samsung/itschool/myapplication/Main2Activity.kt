@@ -45,7 +45,7 @@ class Main2Activity : AppCompatActivity() {
         navView.setupWithNavController(navController)
         // получаем переданное из предыдущих UI значение arg1
         val str=intent.getStringExtra("arg1")
-        Toast.makeText(this,str, Toast.LENGTH_LONG).view
+        Toast.makeText(this,str, Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

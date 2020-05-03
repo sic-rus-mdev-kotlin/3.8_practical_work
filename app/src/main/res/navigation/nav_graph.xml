@@ -53,7 +53,7 @@
         tools:layout="@layout/app_bar_main2" >
         <argument
             android:name="arg1"
-            app:argType="string"
+            app:argType="reference"
             android:defaultValue="@string/string_for_none_val" />
     </activity>
 </navigation>
