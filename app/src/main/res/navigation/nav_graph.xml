@@ -50,5 +50,10 @@
         android:id="@+id/main2Activity"
         android:name="ru.samsung.itschool.myapplication.Main2Activity"
         android:label="app_bar_main2"
-        tools:layout="@layout/app_bar_main2" />
+        tools:layout="@layout/app_bar_main2" >
+        <argument
+            android:name="arg1"
+            app:argType="string"
+            android:defaultValue="@string/string_for_none_val" />
+    </activity>
 </navigation>

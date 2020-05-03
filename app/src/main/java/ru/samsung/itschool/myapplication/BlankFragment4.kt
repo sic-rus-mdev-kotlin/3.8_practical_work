@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +37,18 @@ class BlankFragment4 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment4, container, false)
+        val view=inflater.inflate(R.layout.fragment4, container, false)
+        val et:EditText=view.findViewById(R.id.et)
+        val btn6:Button=view.findViewById(R.id.button6)
+        btn6.setOnClickListener(View.OnClickListener { view ->
+            val bundle:Bundle=Bundle()
+            bundle.putString("arg1",et.text.toString())
+            view.findNavController().navigate(R.id.action_blankFragment4_to_main2Activity,bundle)
+        })
+        val btn6_up:Button=view.findViewById(R.id.button6_up)
+        btn6_up.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigateUp() })
+
+        return view
     }
 
     companion object {
