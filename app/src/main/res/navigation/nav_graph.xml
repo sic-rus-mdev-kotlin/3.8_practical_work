@@ -41,13 +41,19 @@
         android:id="@+id/blankFragment4"
         android:name="ru.samsung.itschool.myapplication.BlankFragment4"
         android:label="fragment4"
-        tools:layout="@layout/fragment4" >
+        tools:layout="@layout/fragment4">
         <action
             android:id="@+id/action_blankFragment4_to_main2Activity"
             app:destination="@id/main2Activity" />
         <action
             android:id="@+id/action_blankFragment4_to_blankFragment32"
             app:destination="@id/blankFragment3" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="app://3.8_practical/frag4" />
+        <deepLink
+            android:id="@+id/deepLink4"
+            app:uri="https://myitacademy.ru/edu/login/index.php#reg" />
     </fragment>
     <activity
         android:id="@+id/main2Activity"
