@@ -3,18 +3,17 @@ package ru.samsung.itschool.myapplication
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Toast
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.navigation.Navigation
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class Main2Activity : AppCompatActivity() {
 
@@ -44,10 +43,13 @@ class Main2Activity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         // получаем переданное из предыдущих UI значение arg1
-        val str=intent.getStringExtra("arg1")
-        Toast.makeText(this,str, Toast.LENGTH_LONG).show()
+        val str = intent.getStringExtra("arg1")
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show()
         // отправка данных обратно вызывающему
-        navController.previousBackStackEntry?.savedStateHandle?.set("result_from_activity", "ответ на:"+str)
+        navController.previousBackStackEntry?.savedStateHandle?.set(
+            "result_from_activity",
+            "ответ на:" + str
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -1,15 +1,13 @@
 package ru.samsung.itschool.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,23 +35,23 @@ class BlankFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        var view:View=inflater.inflate(R.layout.fragment1, container, false)
+        val view: View = inflater.inflate(R.layout.fragment1, container, false)
         // ============= Button обработчик, способ записи 1
-        var btn:Button=view.findViewById(R.id.button)
-        btn.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(p0: View?) {
-                if (p0 != null) {
-                    p0.findNavController().navigate(R.id.action_blankFragment_to_blankFragment2)
-                }
-            }
-        })
+        val btn: Button = view.findViewById(R.id.button)
+        btn.setOnClickListener { _ ->
+            findNavController().navigate(R.id.action_blankFragment_to_blankFragment2)
+        }
         // ============= Button3 обработчик, способ записи 2
-        var btn3:Button=view.findViewById(R.id.button3)
-        btn3.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigate(R.id.action_blankFragment_to_blankFragment3) })
+        val btn3: Button = view.findViewById(R.id.button3)
+        btn3.setOnClickListener { _ ->
+            findNavController().navigate(R.id.action_blankFragment_to_blankFragment3)
+        }
         // ============= Button5 обработчик, способ записи 3
-        view.findViewById<Button>(R.id.button5).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_blankFragment4))
+        view.findViewById<Button>(R.id.button5).setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_blankFragment_to_blankFragment4)
+        )
         return view
     }
 

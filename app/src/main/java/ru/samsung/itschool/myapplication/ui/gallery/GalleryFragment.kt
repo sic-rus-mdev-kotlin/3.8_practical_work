@@ -6,26 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import ru.samsung.itschool.myapplication.R
 
 class GalleryFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private val galleryViewModel: GalleryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-            ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        return inflater.inflate(R.layout.fragment_gallery, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val textView: TextView = view.findViewById(R.id.text_gallery)
+        galleryViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        })
-        return root
+        }
     }
 }
