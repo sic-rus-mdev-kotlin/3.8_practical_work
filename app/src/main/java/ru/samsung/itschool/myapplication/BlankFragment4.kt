@@ -8,9 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,36 +41,30 @@ class BlankFragment4 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment4, container, false)
-        val liveData = findNavController(this).currentBackStackEntry?.getSavedStateHandle()
+        findNavController(this).currentBackStackEntry?.savedStateHandle
             ?.getLiveData<String>("result_from_activity")
-        if (liveData != null) {
-            liveData.observe(viewLifecycleOwner, object : Observer<String?> {
-                override fun onChanged(s: String?) {
-                    returnData = s
-                }
-            })
-        }
-        if(returnData!=null){
-            Toast.makeText(context,returnData,Toast.LENGTH_LONG).show()
+            ?.observe(viewLifecycleOwner) { s -> returnData = s }
+        if (returnData != null) {
+            Toast.makeText(context, returnData, Toast.LENGTH_LONG).show()
         }
         val et: EditText = view.findViewById(R.id.et)
         val btn6: Button = view.findViewById(R.id.button6)
-        btn6.setOnClickListener(View.OnClickListener { view ->
+        btn6.setOnClickListener { _ ->
             // создаем бандл
-            val bundle: Bundle = Bundle()
+            val bundle = Bundle()
             // вносим в него значения
             bundle.putString("arg1", et.text.toString())
             // выполняем навигацию с передачей данных
-            view.findNavController().navigate(R.id.action_blankFragment4_to_main2Activity, bundle)
-        })
-        val btn6_up: Button = view.findViewById(R.id.button6_up)
-        btn6_up.setOnClickListener(View.OnClickListener { view ->
-            view.findNavController().navigateUp()
-        })
+            findNavController().navigate(R.id.action_blankFragment4_to_main2Activity, bundle)
+        }
+        val btn6Up: Button = view.findViewById(R.id.button6_up)
+        btn6Up.setOnClickListener { _ ->
+            findNavController().navigateUp()
+        }
         val btn7: Button = view.findViewById(R.id.button7)
-        btn7.setOnClickListener(View.OnClickListener { view ->
-            view.findNavController().navigate(R.id.action_blankFragment4_to_blankFragment32)
-        })
+        btn7.setOnClickListener { _ ->
+            findNavController().navigate(R.id.action_blankFragment4_to_blankFragment32)
+        }
 
         return view
     }

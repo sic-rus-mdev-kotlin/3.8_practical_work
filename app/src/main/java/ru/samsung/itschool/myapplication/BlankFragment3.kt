@@ -1,12 +1,11 @@
 package ru.samsung.itschool.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,15 +34,22 @@ class BlankFragment3 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        var view:View=inflater.inflate(R.layout.fragment3, container, false)
-        var btn4:Button=view.findViewById(R.id.button4)
-        btn4.setOnClickListener(View.OnClickListener { view -> view.findNavController().navigate(R.id.action_blankFragment3_to_main2Activity)})
-        var btn4_back:Button=view.findViewById(R.id.button4_back)
-        btn4_back.setOnClickListener(View.OnClickListener { view -> view.findNavController().popBackStack()})
+        val view: View = inflater.inflate(R.layout.fragment3, container, false)
+        val btn4: Button = view.findViewById(R.id.button4)
+        btn4.setOnClickListener { _ ->
+            findNavController().navigate(R.id.action_blankFragment3_to_main2Activity)
+        }
+        val btn4Back: Button = view.findViewById(R.id.button4_back)
+        btn4Back.setOnClickListener { _ ->
+            findNavController().popBackStack()
+        }
         // отправка данных обратно вызывающему
-        findNavController().previousBackStackEntry?.savedStateHandle?.set("result_from_activity", "ответные данные")
+        findNavController().previousBackStackEntry?.savedStateHandle?.set(
+            "result_from_activity",
+            "ответные данные"
+        )
         return view
     }
 

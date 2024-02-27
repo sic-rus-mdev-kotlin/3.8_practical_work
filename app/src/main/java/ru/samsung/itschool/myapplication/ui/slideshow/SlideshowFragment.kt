@@ -6,26 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import ru.samsung.itschool.myapplication.R
 
 class SlideshowFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private val slideshowViewModel: SlideshowViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(viewLifecycleOwner, Observer {
+        return inflater.inflate(R.layout.fragment_slideshow, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val textView: TextView = view.findViewById(R.id.text_slideshow)
+        slideshowViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        })
-        return root
+        }
     }
 }

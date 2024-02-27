@@ -1,12 +1,12 @@
 package ru.samsung.itschool.myapplication
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,19 +34,17 @@ class BlankFragment2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        var view:View=inflater.inflate(R.layout.fragment2, container, false)
-        var btn2=view.findViewById<Button>(R.id.button2)
-        btn2.setOnClickListener(object :View.OnClickListener{
-            override fun onClick(p0: View?) {
-                if (p0 != null) {
-                    p0.findNavController().navigate(R.id.action_blankFragment2_to_main2Activity)
-                }
-            }
-        })
-        var btn2_back=view.findViewById<Button>(R.id.button2_back)
-        btn2_back.setOnClickListener(View.OnClickListener { view -> view.findNavController().popBackStack() })
+        val view: View = inflater.inflate(R.layout.fragment2, container, false)
+        val btn2 = view.findViewById<Button>(R.id.button2)
+        btn2.setOnClickListener { _ ->
+            findNavController().navigate(R.id.action_blankFragment2_to_main2Activity)
+        }
+        val btn2Back = view.findViewById<Button>(R.id.button2_back)
+        btn2Back.setOnClickListener { _ ->
+            findNavController().popBackStack()
+        }
         return view
     }
 
